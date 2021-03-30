@@ -1,18 +1,54 @@
-$(document).ready(function(){
-  $('.section05 .slider-wrap').slick({
-     infinite: true ,      // 무한반복
-    centerMode: false ,
-     slidesToShow: 1,     // 보여지는 슬라이드 개수
-     slidesToScroll: 1,   // 넘어가는 슬라이드 개수
-     dots: true,         // 점 네비게이션 표시
-     arrows: true ,     // 화살표 표시
-     fade: false,            // 페이드 효과
-     vertical: false,         // 상하 슬라이드
-     autoplay: true,       //자동스크롤
-     autoplaySpeed: 3000,  //자동스크롤 속도
-    pauseOnHover: false, // 슬라이드 이동	시 마우스 호버하면 슬라이더 멈추게 설정
-	  prevArrow: ".section05 .prev-arrow",
-	  nextArrow: ".section05 .next-arrow",
+$(document).ready(function () {
     
-  });
+    $('.tab-btn-box li').on('click', function () {
+        var data = $(this).attr("data-rel");
+        var $content = $('.' + data);
+        $(this).addClass('on').siblings().removeClass('on');
+        $content.show().siblings().hide();
+    });
+
+
+    var $menuBtmLine = $('nav > .menu-btm-line');
+
+    $('nav > ul > li').mouseenter(function () {
+        var $this = $(this);
+        var left = $this.position().left;
+        var width = $this.width();
+        $menuBtmLine.css('left', left);
+        $menuBtmLine.css('width', width);
+    });
+
+    $('nav > ul > li').mouseleave(function () {
+        $menuBtmLine.css('left', 0);
+        $menuBtmLine.css('width', 0);
+    });
+
+
+    $('nav > ul > li').eq(0).click();
+
+
+    $('.section05 .slider-wrap').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots: true,
+        arrows: true,
+        fade: false,
+        vertical: false,
+        autoplay: true,
+        autoplaySpeed: 4000,
+        pauseOnHover: false,
+        prevArrow: ".section05 .prev-arrow",
+        nextArrow: ".section05 .next-arrow",
+    });
+
+    $('.section06 .slider-wrap').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        autoplay: false,
+        prevArrow: ".section06 .box01 > .prev-arrow",
+        nextArrow: ".section06 .box01 > .next-arrow",
+    });
+
 });
